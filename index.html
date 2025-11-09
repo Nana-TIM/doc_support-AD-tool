@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>----タイトル----</title>
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+
+
+<!-- ▼全体の囲み▼ -->
+<div id="wrapper">
+
+
+
+
+
+
+<div id="header"></div><!--追加-->
+<!-- ▼メニュー▼ -->
+<div id="open"><span id="open-icon"></span></div>
+
+<div id="menu">
+<nav class="cf">
+<ul>
+
+<li><a href="index.html">Top</a>
+<li><a href="sample.html">sample01</a>
+<li><a href="sample02.html">sample02</a>
+
+<li><span>Illust</span>
+ <ul class="sub-menu">
+  <li><a href="#">サブメニュー1</a>
+  <li><a href="#">サブメニュー2</a>
+  <li><a href="#">サブメニュー3</a>
+ </ul>
+
+<li><span>Novel</span>
+ <ul class="sub-menu">
+  <li><a href="#">サブメニュー1</a>
+  <li><a href="#">サブメニュー2</a>
+ </ul>
+
+<li><a href="#">About(工事中)</a>
+
+</ul>
+</nav>
+</div><!-- ▲メニュー▲ -->
+
+<!-- ▼メイン▼ -->
+<div id="contents">
+
+<h2>First</h2>
+
+<div class="txt">
+<img src="image/a01.gif" width="11" height="9" alt=">>">テンプレート番号：n-002<br>
+<img src="image/a02.gif" width="11" height="9" alt=">>">レスポンシブ
+</div>
+
+<h2>はじめに</h2>
+
+当サイトは○○サイトです。サイト内の画像・文章の二次利用はご遠慮願います。みたいな何かを書いたり書かなかったり。<br>
+<a href="#">テキストリンク</a>はこうなりまして、<em>文章を強調</em>したり<span class="marker">マーカー風文字</span>にしたりするとこうなりますのです。
+
+<h3>更新履歴</h3>
+<dl>
+<dt>2025/11/09</dt>
+<dd>新規作成</dd>
+</dl>
+
+</div><!-- ▲メイン▲ -->
+
+<!-- ▼フッタ▼ -->
+<footer>
+<div class="footer-inner">
+<div class="footer-sub">なにか書いたり</div>
+<div id="fl"><a href="http://foollovers.com" target="_blank">designed</a></div>
+</div>
+</footer><!-- ▲フッタ▲ -->
+
+</div><!-- ▲全体の囲み▲ -->
+
+<!-- ページトップに戻る -->
+<a href="#" id="pagetop">▲top</a>
+
+<!-- jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/jquery.toggle.js"></script>
+<script src="js/jquery.scroll.js"></script>
+<script>
+  document.getElementById('header').innerHTML =await fetch('./header.html').then(res => res.text());
+</script>
+
+</body>
+</html>
