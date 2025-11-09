@@ -13,41 +13,8 @@
 <!-- ▼全体の囲み▼ -->
 <div id="wrapper">
 
-
-
-
-
-
-<div id="header"></div><!--追加-->
-<!-- ▼メニュー▼ -->
-<div id="open"><span id="open-icon"></span></div>
-
-<div id="menu">
-<nav class="cf">
-<ul>
-
-<li><a href="index.html">Top</a>
-<li><a href="sample.html">sample01</a>
-<li><a href="sample02.html">sample02</a>
-
-<li><span>Illust</span>
- <ul class="sub-menu">
-  <li><a href="#">サブメニュー1</a>
-  <li><a href="#">サブメニュー2</a>
-  <li><a href="#">サブメニュー3</a>
- </ul>
-
-<li><span>Novel</span>
- <ul class="sub-menu">
-  <li><a href="#">サブメニュー1</a>
-  <li><a href="#">サブメニュー2</a>
- </ul>
-
-<li><a href="#">About(工事中)</a>
-
-</ul>
-</nav>
-</div><!-- ▲メニュー▲ -->
+<div id="header"></div>
+<div id="menu"></div>
 
 <!-- ▼メイン▼ -->
 <div id="contents">
@@ -90,6 +57,7 @@
 <script src="js/jquery.toggle.js"></script>
 <script src="js/jquery.scroll.js"></script>
 <script>
+  //ヘッダー読み込み
   fetch('./header.html')
     .then(response => {
       if (!response.ok) {
@@ -105,6 +73,23 @@
     })
     .catch(error => {
       console.error('Header load error:', error);
+    });
+  //メニュー読み込み
+  fetch('./menu.html')
+    .then(response => {
+      if (!response.ok) {
+        // ステータスコードが404などの場合のエラー処理
+        console.error(`Fetch failed: ${response.status}`);
+        throw new Error('Network response was not ok');
+      }
+      return response.text();
+    })
+    .then(data => {
+      // データを取得できたら挿入
+      document.getElementById('menu').innerHTML = data;
+    })
+    .catch(error => {
+      console.error('Menu load error:', error);
     });
 </script>
 </body>
