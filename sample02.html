@@ -33,13 +33,7 @@
 
 </div><!-- ▲メイン▲ -->
 
-<!-- ▼フッタ▼ -->
-<footer>
-<div class="footer-inner">
-<div class="footer-sub">なにか書いたり</div>
-<div id="fl"><a href="http://foollovers.com" target="_blank">designed</a></div>
-</div>
-</footer><!-- ▲フッタ▲ -->
+<div id="footer"></div>
 
 </div><!-- ▲全体の囲み▲ -->
 
@@ -84,6 +78,23 @@
     })
     .catch(error => {
       console.error('Menu load error:', error);
+    });
+  //フッター読み込み
+  fetch('./footer.html')
+    .then(response => {
+      if (!response.ok) {
+        // ステータスコードが404などの場合のエラー処理
+        console.error(`Fetch failed: ${response.status}`);
+        throw new Error('Network response was not ok');
+      }
+      return response.text();
+    })
+    .then(data => {
+      // データを取得できたら挿入
+      document.getElementById('footer').innerHTML = data;
+    })
+    .catch(error => {
+      console.error('Footer load error:', error);
     });
 </script>
 </body>

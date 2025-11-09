@@ -11,14 +11,7 @@
 <!-- ▼全体の囲み▼ -->
 <div id="wrapper">
 
-<!-- ▼ヘッダ▼ -->
-<header>
-
-<!-- サイト名 -->
-<h1><a href="index2.html">見出し1:&lt;h1&gt;見出し1&lt;/h1&gt;</a></h1>
-
-</header><!-- ▲ヘッダ▲ -->
-
+<div id="header"></div>
 <div id="menu"></div>
 
 <!-- ▼メイン▼ -->
@@ -76,6 +69,23 @@
 <script src="js/jquery.toggle.js"></script>
 <script src="js/jquery.scroll.js"></script>
 <script>
+  //ヘッダー読み込み
+  fetch('./header.html')
+    .then(response => {
+      if (!response.ok) {
+        // ステータスコードが404などの場合のエラー処理
+        console.error(`Fetch failed: ${response.status}`);
+        throw new Error('Network response was not ok');
+      }
+      return response.text();
+    })
+    .then(data => {
+      // データを取得できたら挿入
+      document.getElementById('header').innerHTML = data;
+    })
+    .catch(error => {
+      console.error('Header load error:', error);
+    });
   //メニュー読み込み
   fetch('./menu.html')
     .then(response => {
