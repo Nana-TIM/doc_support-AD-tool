@@ -90,8 +90,22 @@
 <script src="js/jquery.toggle.js"></script>
 <script src="js/jquery.scroll.js"></script>
 <script>
-  document.getElementById('header').innerHTML =await fetch('./header.html').then(res => res.text());
+  fetch('./header.html')
+    .then(response => {
+      if (!response.ok) {
+        // ステータスコードが404などの場合のエラー処理
+        console.error(`Fetch failed: ${response.status}`);
+        throw new Error('Network response was not ok');
+      }
+      return response.text();
+    })
+    .then(data => {
+      // データを取得できたら挿入
+      document.getElementById('header').innerHTML = data;
+    })
+    .catch(error => {
+      console.error('Header load error:', error);
+    });
 </script>
-
 </body>
 </html>
