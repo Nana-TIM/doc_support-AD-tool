@@ -1,136 +1,130 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>要件定義</title>
-<link rel="stylesheet" href="style.css" type="text/css">
-</head>
-<body>
-<!-- ▼全体の囲み▼ -->
-<div id="wrapper">
-<div id="header"></div>
-<div id="menu"></div>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Doc]演助補助ツール</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+  </head>
+  <body>
+    <!-- ▼全体の囲み▼ -->
+    <div id="wrapper">
+    <div id="header"></div>
+    <div id="menu"></div>
 
-<!-- ▼メイン▼ -->
-<div id="contents">
-<h2>要件定義</h2>
-<div class="txt">
-スプレッドシートで実現している以下要件についてローコード開発でどこまで実現できるか検証・整理する。
-</div>
-<h3>要件</h3>
-<img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#要件1">基本情報の追加・更新・参照</a>
-<br><img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#要件2">香盤表の作成・参照</a>
-<br><img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#要件3">稽古予実の登録・参照</a>
-<h3>要件詳細</h3>
-<span class="marker" id="要件1">基本情報の追加・更新・参照</span>
-<hr>
-<hr>
-<span class="marker" id="要件2">香盤表の作成・参照</span>
-<hr>
-<hr>
-<span class="marker" id="要件3">稽古予実の登録・参照</span>
-<hr>
+    <!-- ▼メイン▼ -->
+    <div id="contents">
+      <h2>要件定義</h2>
+      <div class="txt">
+        スプレッドシートで実現している以下要件についてローコード開発でどこまで実現できるか検証・整理する。
+      </div>
+      <h3>要件</h3>
+      <img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#要件1">基本情報の追加・更新・参照</a><br>
+      <img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#要件2">香盤表の作成・参照</a><br>
+      <img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#要件3">稽古予実の登録・参照</a>
+      <h3>要件詳細</h3>
+      <span class="marker" id="要件1">基本情報の追加・更新・参照</span>
+      <ol>
+        <li>以下基本情報の追加・参照
+          <ul>
+            <li class="mandatory">メンバー、ロール（役、裏方）
+            <li>シーン構成
+              <ul>
+                <li>シーン・役者の出ハケ状況を登録
+                  <ul>
+                    <li class="mandatory">シーン登録後、各シーンに対し役者の出ハケ状況を登録
+                    <li>各役者の出ハケを時系列で登録後シーンとして分割
+                  </ul>
+                <li>特殊シーンタグ
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="mandatory">基本情報の更新（変更・削除）
+        <li>更新のバージョン管理
+      </ol>
+      <hr>
+      <span class="marker" id="要件2">香盤表の作成・参照</span>
+      <ol>
+        <li>香盤表の参照
+          <ul>
+            <li class="mandatory">稽古出欠登録
+            <li class="mandatory">代役要否チェック
+          </ul>          
+        </li>
+        <li>香盤表の出力
+        <li>更新のバージョン管理
+      </ol>
+      <hr>
+      <span class="marker" id="要件3">稽古予実の登録・参照</span>
+      <hr>
 
-<a href="#linktest">文字リンクです</a>(押すとページ下部に移動)<hr>
-画像リンクです<br>
-<a href="#"><img src="image/ba01.gif" width="200" height="40" alt="image"></a><hr>
-<em>&lt;em&gt;強調です&lt;/em&gt;</em><hr>
-<span class="marker">&lt;span class=&quot;marker&quot;&gt;文字装飾&lt;/span&gt;</span><hr>
-<div class="dcline">&lt;div class=&quot;dcline&quot;&gt;文字の横に線&lt;/div&gt;</div><hr>
-<div class="txt">&lt;div class=&quot;txt&quot;&gt;文字の横に線&lt;/div&gt;</div><hr>
-<div class="textbox">&lt;div class=&quot;textbox&quot;&gt;枠が出ます&lt;/div&gt;</div><hr>
-<div class="title">大きくなります:&lt;div class=&quot;title&quot;&gt;文字&lt;/div&gt;</div><hr>
-&lt;input size=&quot;20&quot; type=&quot;text&quot; name=&quot;text&quot;value=&quot;文字&quot;&gt;<br>
-<input size="20" type="text" name="text" value="いちぎょうてきすと"><br>
-&lt;textarea rows=&quot;3&quot; cols=&quot;20&quot;&gt;文字&lt;/textarea&gt;<br>
-<textarea rows="3" cols="20">てきすとえりあ</textarea><br>
-※サイズの指定を直接いれてはいますが、ダミーです。<br>この数値はまるっと無視で、サイズの変更はstyle.cssで設定してください。<hr>
-&lt;dl&gt;<br>
-&lt;dt&gt;文字&lt;/dt&gt;<br>
-&lt;dd&gt;説明&lt;/dd&gt;<br>
-&lt;dt&gt;文字&lt;/dt&gt;<br>
-&lt;dd&gt;説明&lt;/dd&gt;<br>
-&lt;/dl&gt;<br>
-<br>
-<dl>
-<dt>文字</dt>
-<dd>説明</dd>
-<dt>文字</dt>
-<dd>説明</dd>
-</dl>
-<hr>
-&lt;img src=&quot;***&quot; &nbsp;<em>class=&quot;frame&quot;</em>&gt;で画像に枠がつきます<br>
-<img src="image/sample.png" width="100" height="100" class="frame" alt="sample"><hr>
+    </div><!-- ▲メイン▲ -->
 
-<div id="linktest">リンク先です</div>
+    <div id="footer"></div>
 
-</div><!-- ▲メイン▲ -->
+    </div><!-- ▲全体の囲み▲ -->
 
-<div id="footer"></div>
+    <!-- ページトップに戻る -->
+    <a href="#" id="pagetop">▲top</a>
 
-</div><!-- ▲全体の囲み▲ -->
-
-<!-- ページトップに戻る -->
-<a href="#" id="pagetop">▲top</a>
-
-<!-- jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="js/jquery.toggle.js"></script>
-<script src="js/jquery.scroll.js"></script>
-<script>
-  //ヘッダー読み込み
-  fetch('./header.html')
-    .then(response => {
-      if (!response.ok) {
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/jquery.toggle.js"></script>
+    <script src="js/jquery.scroll.js"></script>
+    <script>
+      //ヘッダー読み込み
+      fetch('./header.html')
+      .then(response => {
+        if (!response.ok) {
         // ステータスコードが404などの場合のエラー処理
         console.error(`Fetch failed: ${response.status}`);
         throw new Error('Network response was not ok');
-      }
-      return response.text();
-    })
-    .then(data => {
-      // データを取得できたら挿入
-      document.getElementById('header').innerHTML = data;
-    })
-    .catch(error => {
-      console.error('Header load error:', error);
-    });
-  //メニュー読み込み
-  fetch('./menu.html')
-    .then(response => {
-      if (!response.ok) {
+        }
+        return response.text();
+      })
+      .then(data => {
+        // データを取得できたら挿入
+        document.getElementById('header').innerHTML = data;
+      })
+      .catch(error => {
+        console.error('Header load error:', error);
+      });
+      //メニュー読み込み
+      fetch('./menu.html')
+      .then(response => {
+        if (!response.ok) {
         // ステータスコードが404などの場合のエラー処理
         console.error(`Fetch failed: ${response.status}`);
         throw new Error('Network response was not ok');
-      }
-      return response.text();
-    })
-    .then(data => {
-      // データを取得できたら挿入
-      document.getElementById('menu').innerHTML = data;
-    })
-    .catch(error => {
-      console.error('Menu load error:', error);
-    });
-  //フッター読み込み
-  fetch('./footer.html')
-    .then(response => {
-      if (!response.ok) {
+        }
+        return response.text();
+      })
+      .then(data => {
+        // データを取得できたら挿入
+        document.getElementById('menu').innerHTML = data;
+      })
+      .catch(error => {
+        console.error('Menu load error:', error);
+      });
+      //フッター読み込み
+      fetch('./footer.html')
+      .then(response => {
+        if (!response.ok) {
         // ステータスコードが404などの場合のエラー処理
         console.error(`Fetch failed: ${response.status}`);
         throw new Error('Network response was not ok');
-      }
-      return response.text();
-    })
-    .then(data => {
-      // データを取得できたら挿入
-      document.getElementById('footer').innerHTML = data;
-    })
-    .catch(error => {
-      console.error('Footer load error:', error);
-    });
-</script>
-</body>
+        }
+        return response.text();
+      })
+      .then(data => {
+        // データを取得できたら挿入
+        document.getElementById('footer').innerHTML = data;
+      })
+      .catch(error => {
+        console.error('Footer load error:', error);
+      });
+    </script>
+  </body>
 </html>

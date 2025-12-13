@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Doc]演助補助ツール</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+  </head>
+  <body>
+    <!-- ▼全体の囲み▼ -->
+    <div id="wrapper">
+    <div id="header"></div>
+    <div id="menu"></div>
+
+    <!-- ▼メイン▼ -->
+    <div id="contents">
+      <h2>設計</h2>
+      <div class="txt">
+        スプレッドシートで実現している以下要件についてローコード開発でどこまで実現できるか検証・整理する。
+      </div>
+      <h3>機能</h3>
+      <img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#要件1">基本情報の追加・更新・参照</a><br>
+      <img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#DB設計">基本情報の追加・更新・参照</a>
+
+      <h3>要件詳細</h3>
+      <span class="marker" id="要件1">基本情報の追加・更新・参照</span>
+      <ol>
+        <li>以下基本情報の追加・参照
+          <ul>
+            <li>メンバー、ロール（役、裏方）
+            <li>シーン構成
+              <ul>
+                <li>シーン・役者の出ハケ状況を登録
+                  <ul>
+                    <li>シーン登録後、各シーンに対し役者の出ハケ状況を登録
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>基本情報の更新（変更・削除）
+      </ol>
+      <hr>
+
+      <span class="marker" id="DB">DB設計</span>
+
+<ul>
+  <!-- 演目 -->
+  <li>
+    <div class="ddl">
+      <h3>演目 (play)</h3>
+      <table>
+        <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
+        <tr><td>演目ID</td><td>id</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
+        <tr><td>演目名称</td><td>name</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
+        <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td>保留</td></tr>
+      </table>
+    </div>
+  </li>
+
+  <!-- クルー -->
+  <li>
+    <div class="ddl">
+      <h3>クルー (crew)</h3>
+      <table>
+        <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
+        <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
+        <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td>保留</td></tr>
+        <tr><td>クルーID</td><td>id</td><td>数値</td><td></td><td>PK</td><td></td></tr>
+        <tr><td>クルー名称</td><td>name</td><td>文字列</td><td></td><td></td><td></td></tr>
+      </table>
+    </div>
+  </li>
+
+  <!-- ロール -->
+  <li>
+    <div class="ddl">
+      <h3>ロール (role)</h3>
+      <table>
+        <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
+        <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
+        <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td>保留</td></tr>
+        <tr><td>ロールID</td><td>role_id</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>ロール区分</td><td>role_kbn</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>ロール名称</td><td>role_name</td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>複数可否フラグ</td><td>multi_flg</td><td>数値</td><td></td><td></td><td></td></tr>
+        <tr class="tbc"><td>稽古フラグ</td><td>practice_flg</td><td>数値</td><td></td><td></td><td>保留</td></tr>
+        <tr class="tbc"><td>介錯可否フラグ</td><td>assist_flg</td><td>数値</td><td></td><td></td><td>保留</td></tr>
+      </table>
+    </div>
+  </li>
+
+  <!-- クルーロール -->
+  <li>
+    <div class="ddl">
+      <h3>クルーロール (crew_role)</h3>
+      <table>
+        <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
+        <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
+        <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td>保留</td></tr>
+        <tr><td>クルーロールID</td><td>id</td><td>数値</td><td></td><td>PK</td><td></td></tr>
+        <tr><td>クルーID</td><td>crew_id</td><td>数値</td><td></td><td></td><td></td></tr>
+        <tr><td>ロールID</td><td>role_id</td><td>数値</td><td></td><td></td><td></td></tr>
+        <tr><td>ロール名称</td><td>role_name</td><td>文字列</td><td></td><td></td><td></td></tr>
+        <tr><td>ロール名称</td><td></td><td>文字列</td><td></td><td></td><td></td></tr>
+        <tr class="tbc"><td>ロール区分</td><td>role_kbn</td><td></td><td></td><td></td><td>保留</td></tr>
+      </table>
+    </div>
+  </li>
+
+  <!-- シーン構成 -->
+  <li>
+    <div class="ddl">
+      <h3>シーン構成 (composition)</h3>
+      <table>
+        <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
+        <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
+        <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td>保留</td></tr>
+        <tr><td>構成ID</td><td>id</td><td>数値</td><td></td><td>PK</td><td></td></tr>
+        <tr><td>大分類</td><td>category_major</td><td>文字列</td><td></td><td></td><td></td></tr>
+        <tr><td>中分類</td><td>category_medium</td><td>文字列</td><td></td><td></td><td></td></tr>
+        <tr><td>小分類</td><td>category_minor</td><td>文字列</td><td></td><td></td><td></td></tr>
+        <tr><td>大分類ソートNO</td><td>sort_major</td><td>数値</td><td></td><td></td><td></td></tr>
+        <tr><td>中分類ソートNO</td><td>sort_medium</td><td>数値</td><td></td><td></td><td></td></tr>
+        <tr><td>小分類ソートNO</td><td>sort_minor</td><td>数値</td><td></td><td></td><td></td></tr>
+        <tr><td>オプション区分</td><td>option_kbn</td><td>文字列</td><td></td><td></td><td></td></tr>
+      </table>
+    </div>
+  </li>
+
+<li>
+  <div class="ddl">
+    <h3>香盤 (schedule_onstage)</h3>
+    <table>
+      <tr>
+        <th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th>
+      </tr>
+      <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
+      <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td>保留</td></tr>
+      <tr><td>構成ID</td><td>composition_id</td><td>数値</td><td></td><td>PK</td><td></td></tr>
+      <tr><td>クルーロール一覧</td><td>crewroles</td><td>文字列</td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+</li>
+
+
+
+<!--      
+      画像リンクです<br>
+      <a href="#"><img src="image/ba01.gif" width="200" height="40" alt="image"></a>
+      <hr>
+      <em>&lt;em&gt;強調です&lt;/em&gt;</em>
+      <hr>
+      <span class="marker">&lt;span class=&quot;marker&quot;&gt;文字装飾&lt;/span&gt;</span>
+      <hr>
+      <div class="dcline">&lt;div class=&quot;dcline&quot;&gt;文字の横に線&lt;/div&gt;</div>
+      <hr>
+      <div class="txt">&lt;div class=&quot;txt&quot;&gt;文字の横に線&lt;/div&gt;</div>
+      <hr>
+      <div class="textbox">&lt;div class=&quot;textbox&quot;&gt;枠が出ます&lt;/div&gt;</div>
+      <hr>
+      <div class="title">大きくなります:&lt;div class=&quot;title&quot;&gt;文字&lt;/div&gt;</div>
+      <hr>
+      &lt;input size=&quot;20&quot; type=&quot;text&quot; name=&quot;text&quot;value=&quot;文字&quot;&gt;<br>
+      <input size="20" type="text" name="text" value="いちぎょうてきすと"><br>
+      &lt;textarea rows=&quot;3&quot; cols=&quot;20&quot;&gt;文字&lt;/textarea&gt;<br>
+      <textarea rows="3" cols="20">てきすとえりあ</textarea><br>
+      ※サイズの指定を直接いれてはいますが、ダミーです。
+      <br>この数値はまるっと無視で、サイズの変更はstyle.cssで設定してください。
+      <hr>
+      <dl>
+      <dt>文字</dt>
+      <dd>説明</dd>
+      <dt>文字</dt>
+      <dd>説明</dd>
+      </dl>
+      <hr>
+      &lt;img src=&quot;***&quot; &nbsp;<em>class=&quot;frame&quot;</em>&gt;で画像に枠がつきます<br>
+      <img src="image/sample.png" width="100" height="100" class="frame" alt="sample">
+      <hr>
+-->
+    </div><!-- ▲メイン▲ -->
+
+    <div id="footer"></div>
+
+    </div><!-- ▲全体の囲み▲ -->
+
+    <!-- ページトップに戻る -->
+    <a href="#" id="pagetop">▲top</a>
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/jquery.toggle.js"></script>
+    <script src="js/jquery.scroll.js"></script>
+    <script>
+      //ヘッダー読み込み
+      fetch('./header.html')
+      .then(response => {
+        if (!response.ok) {
+        // ステータスコードが404などの場合のエラー処理
+        console.error(`Fetch failed: ${response.status}`);
+        throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(data => {
+        // データを取得できたら挿入
+        document.getElementById('header').innerHTML = data;
+      })
+      .catch(error => {
+        console.error('Header load error:', error);
+      });
+      //メニュー読み込み
+      fetch('./menu.html')
+      .then(response => {
+        if (!response.ok) {
+        // ステータスコードが404などの場合のエラー処理
+        console.error(`Fetch failed: ${response.status}`);
+        throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(data => {
+        // データを取得できたら挿入
+        document.getElementById('menu').innerHTML = data;
+      })
+      .catch(error => {
+        console.error('Menu load error:', error);
+      });
+      //フッター読み込み
+      fetch('./footer.html')
+      .then(response => {
+        if (!response.ok) {
+        // ステータスコードが404などの場合のエラー処理
+        console.error(`Fetch failed: ${response.status}`);
+        throw new Error('Network response was not ok');
+        }
+        return response.text();
+      })
+      .then(data => {
+        // データを取得できたら挿入
+        document.getElementById('footer').innerHTML = data;
+      })
+      .catch(error => {
+        console.error('Footer load error:', error);
+      });
+    </script>
+  </body>
+</html>
