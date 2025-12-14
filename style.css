@@ -41,7 +41,7 @@ background:#fff;
 border:1px solid #000;
 margin:20px auto 60px;
 text-align:left;
-width:600px /* 全体の幅・大きさはここで変更 */
+/*width:600px /* 全体の幅・大きさはここで変更 */
 }
 header{
 background-image:url(image/back02.gif);
@@ -255,35 +255,36 @@ border:1px solid;
 padding:5px
 }
 .ddl{
-margin:2em 0;
+margin:5px 0;
 }
 
 .mandatory:after {
 content: "*必須";
 color:red;
 vertical-align: super; /* 上付きに配置 */
-font-size: 0.6em; /* サイズを小さく調整 */
+font-size: 8px; /* サイズを小さく調整 */
 }
 
 /* ===================================
 テーブル定義
 =================================== */
-/* ddlクラス内のtable全体に適用 */
-.ddl table {
+table {
   border-collapse: collapse;
-  width: 100%;
-  margin: 10px 0;
+  table-layout: auto;   /* セル内容に応じて幅を自動調整 */
+  width: auto;          /* 必要な分だけ広がる */
+  max-width: 100%;      /* 画面幅を超えないよう制限 */
+  margin: 5px 0;
   border: 1px solid #999; /* 外枠は実線 */
 }
 /* ヘッダー部分 */
-.ddl table th {
+table th {
   background-color: #e6f2ff;   /* 薄青色 */
   border: 1px solid #999;      /* ヘッダーは実線 */
-  padding: 3px 5px;
+  padding: 2px 4px;
   text-align: left;
 }
 /* データ部分 */
-.ddl table td {
+table td {
   border-left: 1px solid #999;   /* 列の区切りは実線 */
   border-right: 1px solid #999;  /* 列の区切りは実線 */
   border-top: 1px dotted #999;   /* 行を区切る水平線は点線 */
@@ -292,23 +293,28 @@ font-size: 0.6em; /* サイズを小さく調整 */
   font-size: 0.8em;
 }
 /* テーブル名見出し */
-.ddl h3 {
-  margin: 8px 0;
+.ddl h4 {
+  margin-top: 12px;
   color: #333;
 }
+
 /* 検討中行 */
-.ddl table tr.tbc {
+table tr.tbc {
   background-color: #e0e0e0; /* より濃いグレーで明確に */
   color: #444;               /* 文字色も少し濃くして可読性を確保 */
 }
 /* 備考欄に注記を追加 */
-.ddl table tr.tbc td:last-child::after {
+table tr.tbc td:last-child::after {
   content: " *検討中";
   color: #555;               /* 注記文言も濃いグレーで見やすく */
   font-style: italic;
 vertical-align: super; /* 上付きに配置 */
-font-size: 0.4em; /* サイズを小さく調整 */
+font-size: 8px; /* サイズを小さく調整 */
 }
+
+
+
+
 
 /* ===================================
 スマホ、タブレット用

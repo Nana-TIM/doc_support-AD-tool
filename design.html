@@ -20,11 +20,12 @@
         スプレッドシートで実現している以下要件についてローコード開発でどこまで実現できるか検証・整理する。
       </div>
       <h3>機能</h3>
-      <img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#要件1">基本情報の追加・更新・参照</a><br>
-      <img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#DB設計">基本情報の追加・更新・参照</a>
+      <img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#要件1">[要件]基本情報の追加・更新・参照</a><br>
+      <img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#画面">画面設計</a><br>
+      <img src="image/a01.gif" width="11" height="9" alt=">>"><a href="#DB">DB設計</a>
 
       <h3>要件詳細</h3>
-      <span class="marker" id="要件1">基本情報の追加・更新・参照</span>
+      <span class="marker" id="要件1">[要件]基本情報の追加・更新・参照</span>
       <ol>
         <li>以下基本情報の追加・参照
           <ul>
@@ -44,107 +45,190 @@
       </ol>
       <hr>
 
-      <span class="marker" id="DB">DB設計</span>
-
-<ul>
-  <!-- 演目 -->
-  <li>
-    <div class="ddl">
-      <h3>演目 (play)</h3>
-      <table>
-        <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
-        <tr><td>演目ID</td><td>id</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
-        <tr><td>演目名称</td><td>name</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
-        <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td>保留</td></tr>
-      </table>
-    </div>
-  </li>
-
-  <!-- クルー -->
-  <li>
-    <div class="ddl">
-      <h3>クルー (crew)</h3>
-      <table>
-        <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
-        <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
-        <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td>保留</td></tr>
-        <tr><td>クルーID</td><td>id</td><td>数値</td><td></td><td>PK</td><td></td></tr>
-        <tr><td>クルー名称</td><td>name</td><td>文字列</td><td></td><td></td><td></td></tr>
-      </table>
-    </div>
-  </li>
-
-  <!-- ロール -->
-  <li>
-    <div class="ddl">
-      <h3>ロール (role)</h3>
-      <table>
-        <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
-        <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
-        <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td>保留</td></tr>
-        <tr><td>ロールID</td><td>role_id</td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>ロール区分</td><td>role_kbn</td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>ロール名称</td><td>role_name</td><td></td><td></td><td></td><td></td></tr>
-        <tr><td>複数可否フラグ</td><td>multi_flg</td><td>数値</td><td></td><td></td><td></td></tr>
-        <tr class="tbc"><td>稽古フラグ</td><td>practice_flg</td><td>数値</td><td></td><td></td><td>保留</td></tr>
-        <tr class="tbc"><td>介錯可否フラグ</td><td>assist_flg</td><td>数値</td><td></td><td></td><td>保留</td></tr>
-      </table>
-    </div>
-  </li>
-
-  <!-- クルーロール -->
-  <li>
-    <div class="ddl">
-      <h3>クルーロール (crew_role)</h3>
-      <table>
-        <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
-        <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
-        <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td>保留</td></tr>
-        <tr><td>クルーロールID</td><td>id</td><td>数値</td><td></td><td>PK</td><td></td></tr>
-        <tr><td>クルーID</td><td>crew_id</td><td>数値</td><td></td><td></td><td></td></tr>
-        <tr><td>ロールID</td><td>role_id</td><td>数値</td><td></td><td></td><td></td></tr>
-        <tr><td>ロール名称</td><td>role_name</td><td>文字列</td><td></td><td></td><td></td></tr>
-        <tr><td>ロール名称</td><td></td><td>文字列</td><td></td><td></td><td></td></tr>
-        <tr class="tbc"><td>ロール区分</td><td>role_kbn</td><td></td><td></td><td></td><td>保留</td></tr>
-      </table>
-    </div>
-  </li>
-
-  <!-- シーン構成 -->
-  <li>
-    <div class="ddl">
-      <h3>シーン構成 (composition)</h3>
-      <table>
-        <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
-        <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
-        <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td>保留</td></tr>
-        <tr><td>構成ID</td><td>id</td><td>数値</td><td></td><td>PK</td><td></td></tr>
-        <tr><td>大分類</td><td>category_major</td><td>文字列</td><td></td><td></td><td></td></tr>
-        <tr><td>中分類</td><td>category_medium</td><td>文字列</td><td></td><td></td><td></td></tr>
-        <tr><td>小分類</td><td>category_minor</td><td>文字列</td><td></td><td></td><td></td></tr>
-        <tr><td>大分類ソートNO</td><td>sort_major</td><td>数値</td><td></td><td></td><td></td></tr>
-        <tr><td>中分類ソートNO</td><td>sort_medium</td><td>数値</td><td></td><td></td><td></td></tr>
-        <tr><td>小分類ソートNO</td><td>sort_minor</td><td>数値</td><td></td><td></td><td></td></tr>
-        <tr><td>オプション区分</td><td>option_kbn</td><td>文字列</td><td></td><td></td><td></td></tr>
-      </table>
-    </div>
-  </li>
-
+      <span class="marker" id="画面">画面設計</span>
+      <ul>
+        <li>
+          <h3>基本情報登録</h3>
+          <div class="txt">
+            <pre>
+初期設定として以下マスタの登録をする。
+＜演目情報＞
+＜メンバー＞
+＜ロール＞
+＜シーン＞検討中
+            </pre>
+          </div>
+        </li>
 <li>
   <div class="ddl">
-    <h3>香盤 (schedule_onstage)</h3>
+    <h4>演目情報</h4>
     <table>
-      <tr>
-        <th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th>
-      </tr>
-      <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
-      <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td>保留</td></tr>
-      <tr><td>構成ID</td><td>composition_id</td><td>数値</td><td></td><td>PK</td><td></td></tr>
-      <tr><td>クルーロール一覧</td><td>crewroles</td><td>文字列</td><td></td><td></td><td></td></tr>
+      <tr><th>項目</th><th>形式</th><th>制限</th><th>チェック</th><th>備考</th></tr>
+      <tr><td>演目ID</td><td>テキストボックス</td><td>★</td><td>登録済チェック</td><td></td></tr>
+      <tr><td>演目名</td><td>テキストボックス</td><td>★</td><td></td><td></td></tr>
+    </table>
+  </div>
+  <div class="ddl">
+    <h4>メンバー</h4>
+    <table>
+      <tr><th>項目</th><th>形式</th><th>制限</th><th>チェック</th><th>備考</th></tr>
+      <tr><td>演目ID</td><td>プルダウン</td><td>★</td><td>必須チェック</td><td></td></tr>
+      <tr><td>名前</td><td>テキストボックス</td><td>★</td><td>登録済チェック</td><td></td></tr>
+    </table>
+  </div>
+  <div class="ddl">
+    <h4>ロール</h4>
+    <table>
+      <tr><th>項目</th><th>形式</th><th>制限</th><th>チェック</th><th>備考</th></tr>
+      <tr><td>演目ID</td><td>プルダウン</td><td>★</td><td>必須チェック</td><td></td></tr>
+      <tr><td>区分</td><td>プルダウン</td><td>★</td><td>必須チェック</td><td>キャスト、裏方</td></tr>
+      <tr><td>名称</td><td>テキストボックス</td><td>★</td><td>登録済チェック</td><td></td></tr>
+      <tr><td>複数可否フラグ</td><td>チェックボックス</td><td>★</td><td></td><td>複数のクルーに対しロールを割り当てることが可能か（アンサンブルはチェックオン:可等）</td></tr>
     </table>
   </div>
 </li>
 
+
+
+        <li>
+          <h3>紐付登録</h3>
+          <div class="txt">
+            <pre>
+基本情報登録後、各データの紐づけ登録路実施する。
+＜ロール割当＞検討中
+・ロール
+・メンバー
+＜シーン割当＞検討中
+            </pre>
+          </div>
+        </li>
+      </ul>
+      <hr>
+      <span class="marker" id="DB">DB設計</span>
+
+      <!-- テーブル定義一覧 -->
+      <h3>マスタ系テーブル</h3>
+      <ul>
+        <!-- 演目 -->
+        <li>
+          <div class="ddl">
+            <h4>演目 (play)</h4>
+            <table>
+              <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
+              <tr><td>演目ID</td><td>id</td><td>文字列</td><td></td><td>PK</td><td>変更不可</td></tr>
+              <tr><td>演目名称</td><td>name</td><td>文字列</td><td></td><td>PK</td><td></td></tr>
+              <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK</td><td></td></tr>
+            </table>
+          </div>
+        </li>
+
+        <!-- クルー -->
+        <li>
+          <div class="ddl">
+            <h4>クルー (crew)</h4>
+            <table>
+              <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
+              <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr><td>クルーID</td><td>id</td><td>文字列</td><td></td><td>PK</td><td>自動採番(crewxxxx)</td></tr>
+              <tr><td>クルー名称</td><td>name</td><td>文字列</td><td></td><td>NOT NULL</td><td></td></tr>
+            </table>
+          </div>
+        </li>
+
+        <!-- ロール -->
+        <li>
+          <div class="ddl">
+            <h4>ロール (role)</h4>
+            <table>
+              <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
+              <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr><td>ロールID</td><td>id</td><td>文字列</td><td></td><td>PK</td><td>自動採番(rolexxxx)</td></tr>
+              <tr><td>ロール区分</td><td>role_kbn</td><td></td><td></td><td>NOT NULL</td><td>キャスト、裏方</td></tr>
+              <tr><td>ロール名称</td><td>role_name</td><td></td><td></td><td>NOT NULL</td><td>表方：役名、裏方：小道具、衣装</td></tr>
+              <tr><td>複数可否フラグ</td><td>multi_flg</td><td>数値</td><td></td><td>NOT NULL</td><td>1:有効、0:無効</td></tr>
+              <tr class="tbc"><td>稽古フラグ</td><td>practice_flg</td><td>数値</td><td></td><td></td><td>1:稽古用、0:本番・稽古共通</td></tr>
+              <tr class="tbc"><td>介錯可否フラグ</td><td>assist_flg</td><td>数値</td><td></td><td></td><td>1:有効、0:無効</td></tr>
+            </table>
+          </div>
+        </li>
+
+        <!-- シーン -->
+        <li>
+          <div class="ddl">
+            <h4>シーン (scene)</h4>
+            <table>
+              <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
+              <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr><td>シーンID</td><td>id</td><td>文字列</td><td></td><td>PK</td><td>自動採番(scnxxxx)</td></tr>
+              <tr><td>ソートNO</td><td>sort</td><td>数値</td><td></td><td>NOT NULL</td><td></td></tr>
+              <tr><td>大分類</td><td>category_major</td><td>文字列</td><td></td><td></td><td></td></tr>
+              <tr><td>中分類</td><td>category_medium</td><td>文字列</td><td></td><td></td><td></td></tr>
+              <tr><td>小分類</td><td>category_minor</td><td>文字列</td><td></td><td>NOT NULL</td><td></td></tr>
+              <tr><td>大分類ソートNO</td><td>sort_major</td><td>数値</td><td></td><td></td><td></td></tr>
+              <tr><td>中分類ソートNO</td><td>sort_medium</td><td>数値</td><td></td><td></td><td></td></tr>
+              <tr><td>小分類ソートNO</td><td>sort_minor</td><td>数値</td><td></td><td>NOT NULL</td><td></td></tr>
+              <tr><td>オプション区分</td><td>option_kbn</td><td>文字列</td><td></td><td></td><td>殺陣等</td></tr>
+            </table>
+          </div>
+        </li>
+      </ul>
+
+      <h3>マスタ系以外テーブル</h3>
+      <ul>
+        <!-- クルーロール -->
+        <li>
+          <div class="ddl">
+            <h4>クルーロール (crew_role)</h4>
+            <table>
+              <tr><th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th></tr>
+              <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr><td>クルーロールID</td><td>id</td><td>文字列</td><td></td><td>PK</td><td>自動採番(crrlxxxx)</td></tr>
+              <tr><td>クルーID</td><td>crew_id</td><td>文字列</td><td></td><td>NOT NULL</td><td></td></tr>
+              <tr><td>ロールID</td><td>role_id</td><td>文字列</td><td></td><td>NOT NULL</td><td></td></tr>
+              <tr><td>優先順位</td><td>priority</td><td>数値</td><td></td><td></td><td>数値が入っているものを昇順で優先（メインキャスト、アンサンブルの兼任等）</td></tr>
+            </table>
+          </div>
+        </li>
+
+        <!-- 香盤 -->
+        <li>
+          <div class="ddl">
+            <h4>香盤 (schedule)</h4>
+            <table>
+              <tr>
+                <th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th>
+              </tr>
+              <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr><td>シーンID</td><td>scene_id</td><td>文字列</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr><td>ロールID</td><td>role_id</td><td>文字列</td><td></td><td>PK/FK</td><td>クルーロールIDが実でない場合紐づけに使用</td></tr>
+              <tr><td>クルーロールID</td><td>crewrole_id</td><td>文字列</td><td></td><td>PK</td><td>仮ID:tmpxxxx</td></tr>
+              <tr><td>仮FLG</td><td>tmp_flg</td><td>数値</td><td></td><td></td><td>クルーロールIDが「0:実データ」「1:仮データ」</td></tr>
+              <tr><td>特記事項</td><td>remarks</td><td>文字列</td><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </li>
+        <li>
+          <div class="ddl">
+            <h4>香盤_一時テーブル (tmp_schedule)</h4>
+            <table>
+              <tr>
+                <th>論理名</th><th>物理名</th><th>種類</th><th>サイズ</th><th>制約</th><th>備考</th>
+              </tr>
+              <tr><td>演目ID</td><td>play_id</td><td>文字列</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr class="tbc"><td>バージョンNO</td><td>version_no</td><td>数値</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr><td>シーンID</td><td>scene_id</td><td>数値</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr><td>ロールIDリスト</td><td>role_ids</td><td>数値</td><td></td><td>PK/FK</td><td></td></tr>
+              <tr><td>特記事項</td><td>remarks</td><td>文字列</td><td></td><td></td><td></td></tr>
+            </table>
+          </div>
+        </li>
+
+      </ul>
 
 
 <!--      
